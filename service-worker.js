@@ -1,6 +1,6 @@
 
 self.addEventListener('install', function(e) {
-  e.waitUntil(caches.open('booty-hole').then(function(cache) {
+  e.waitUntil(caches.open('booty-hole-v2').then(function(cache) {
     return cache.addAll(['index.html', 'data.json', 'manifest.json', 'icon-192.png', 'icon-512.png']);
   }));
 });
