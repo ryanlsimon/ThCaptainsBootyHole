@@ -7,7 +7,7 @@
       "Enemy",
       "Human"
     ],
-    "link": "https://drive.google.com/uc?id=1D1Ta1G-4hfTAY5ya5kajtIQq1VhDVh5Y&export=download",
+    "link": "https://drive.google.com/file/d/1D1Ta1G-4hfTAY5ya5kajtIQq1VhDVh5Y/view?usp=drivesdk",
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
@@ -17,7 +17,7 @@
       "Human",
       "Cleric"
     ],
-    "link": "https://drive.google.com/uc?id=1vNkkcLALISR2UzhIBXHyZvb9cQkJTQ1U&export=download",
+    "link": "https://drive.google.com/file/d/1vNkkcLALISR2UzhIBXHyZvb9cQkJTQ1U/view?usp=drivesdk",
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
@@ -27,7 +27,7 @@
       "Dwarf",
       "Warrior"
     ],
-    "link": "https://drive.google.com/uc?id=1YXRUeBrCl5HUYCtiZh5-p8KfnNFPT9c7&export=download",
+    "link": "https://drive.google.com/file/d/1YXRUeBrCl5HUYCtiZh5-p8KfnNFPT9c7/view?usp=drivesdk",
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
@@ -36,7 +36,7 @@
       "Enemy",
       "Monster"
     ],
-    "link": "https://drive.google.com/uc?id=1Pw8S-JpPHX85ry1TG4ue_pprql7LrhGI&export=download",
+    "link": "https://drive.google.com/file/d/1Pw8S-JpPHX85ry1TG4ue_pprql7LrhGI/view?usp=drivesdk",
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
@@ -45,7 +45,355 @@
       "Enemy",
       "Goblin"
     ],
-    "link": "https://drive.google.com/uc?id=162klViKxp4ob3zvRtnx2suSK-Ny4lvQK&export=download",
+    "link": "https://drive.google.com/file/d/162klViKxp4ob3zvRtnx2suSK-Ny4lvQK/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "zombies",
+    "tags": [
+      "Enemy",
+      "Undead",
+      "Zombie"
+    ],
+    "link": "https://drive.google.com/file/d/13Sxh2r1i2qjE7-V3vOOXIhON2jqbD2mK/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "the-dead-warlord",
+    "tags": [
+      "Enemy",
+      "Undead"
+    ],
+    "link": "https://drive.google.com/file/d/1V0Rye9rTu_DBx07aJoGZrB4Lo-96VFtX/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "medival-knight",
+    "tags": [
+      "Hero",
+      "Warrior",
+      "Human"
+    ],
+    "link": "https://drive.google.com/file/d/1Colev97l8X3CYvjgfff4rpZUmcUbDOUf/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "oldhammer-barbarian",
+    "tags": [
+      "Hero",
+      "Warrior",
+      "Human"
+    ],
+    "link": "https://drive.google.com/file/d/1UkuFENg6hT6IH3Y3h-TQiNMVPNs12EwN/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "orc-warrior",
+    "tags": [
+      "Enemy",
+      "Orc"
+    ],
+    "link": "https://drive.google.com/file/d/17ITgJgAx2ynMTNvUpUBXQA4OiXk7TAZv/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "dice-tower-tray",
+    "tags": [
+      "Accessory"
+    ],
+    "link": "https://drive.google.com/file/d/1-8HXBb6nEsFte2i_L4eWwUynHaoYCkWm/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "12th-century-footknight",
+    "tags": [
+      "Hero",
+      "Warrior",
+      "Human"
+    ],
+    "link": "https://drive.google.com/file/d/1rp9BBmS3BXorHETrFNjiIr3XP66jgMxk/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Ghoul",
+    "tags": [
+      "Enemy",
+      "Undead",
+      "Ghoul"
+    ],
+    "link": "https://drive.google.com/file/d/1Ua5dbskIn9RIWXo1zTwL7VAgxJa-J3_o/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "mad-wizard-dice-tower",
+    "tags": [
+      "Accessory"
+    ],
+    "link": "https://drive.google.com/file/d/1LlhzFVvDPS1qz8bSH-quCba085cdvip8/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Dwarf with hammer 28-32",
+    "tags": [
+      "Hero",
+      "Dwarf",
+      "Warrior",
+      "Male"
+    ],
+    "link": "https://drive.google.com/file/d/1pnXfjZ_GJ7FmqjKVxPUDKu-28Z_WhWbf/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "fates-end-dice-tower",
+    "tags": [
+      "Accessory"
+    ],
+    "link": "https://drive.google.com/file/d/1wkhNQROA01hvLmJB9YtfXj7Ot0Ojb8UH/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Olistin-Alatel",
+    "tags": [
+      "Hero"
+    ],
+    "link": "https://drive.google.com/file/d/15Uhk6h8_LeYY57lWHEaIHV2nLCDjtQiX/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "demonic-slayer",
+    "tags": [
+      "Enemy",
+      "demon"
+    ],
+    "link": "https://drive.google.com/file/d/19DvUZYBrqn7pHmqKgowvEeq-P21O2Edr/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "free-stl-tree-elf-lady",
+    "tags": [
+      "NPC",
+      "Elf",
+      "Female"
+    ],
+    "link": "https://drive.google.com/file/d/1FTs43AlWL-wQP2lQ8NNUj87Np3ljWW9E/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Magnum_Orcus",
+    "tags": [
+      "Enemy",
+      "Orc",
+      "Male"
+    ],
+    "link": "https://drive.google.com/file/d/1bgnxY-T-2LnRWMTllOoeaHYlKGQVz-Qv/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "werewolf",
+    "tags": [
+      "Enemy",
+      "Monster",
+      "Werewolf"
+    ],
+    "link": "https://drive.google.com/file/d/1RMBOFx3A549IoVJSYIIkiAvI1utqnpIV/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Pack Mule resting",
+    "tags": [
+      "Animal",
+      "Mount"
+    ],
+    "link": "https://drive.google.com/file/d/1Rx988a3LW2CJRPMz6ApnvEsut_GM-x1y/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Death_Priest",
+    "tags": [
+      "Enemy",
+      "Hero",
+      "Male",
+      "Wizard",
+      "Cleric"
+    ],
+    "link": "https://drive.google.com/file/d/1sC3l_pdBkruXEsR1FUVsbAx0IOyHc_qj/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Warborn-Free",
+    "tags": [
+      "Hero",
+      "Warrior",
+      "Male"
+    ],
+    "link": "https://drive.google.com/file/d/1tV8FASvHGVV--Q41OH6Duyv1913ZfNse/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Pack Mule",
+    "tags": [
+      "Animal",
+      "Mount"
+    ],
+    "link": "https://drive.google.com/file/d/1jHZKQJD3VElGsJV214r6dYfZoXnc-grk/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "muriel",
+    "tags": [
+      "Hero",
+      "Female"
+    ],
+    "link": "https://drive.google.com/file/d/1-18-0ufQrmpRz7QmBvtyMpBUSyj9bntl/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "SerratiSover-eign",
+    "tags": [
+      "Enemy"
+    ],
+    "link": "https://drive.google.com/file/d/1IMwmkCp0w-qSt8vn-1ZLjUbpJYLhdITx/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Miyagi",
+    "tags": [
+      "Hero",
+      "NPC",
+      "Warrior",
+      "Monk",
+      "Male"
+    ],
+    "link": "https://drive.google.com/file/d/1a3e1NUTMRTqjaTLoXlVxU2raBrAZ804Z/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "purple-worm",
+    "tags": [
+      "Enemy",
+      "Monster",
+      "Worm"
+    ],
+    "link": "https://drive.google.com/file/d/158E2mRN7NA48fxoDOgOo05QKat1d9PzF/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Penitent Bulwark",
+    "tags": [
+      "Enemy"
+    ],
+    "link": "https://drive.google.com/file/d/1CdjI9_IZ_9o34Z1IY0lnRohn8U0kB5Ec/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Free Crusader",
+    "tags": [
+      "Hero",
+      "Warrior",
+      "Male"
+    ],
+    "link": "https://drive.google.com/file/d/1Mw1zdwO01Iy5frsN1ZCXKac5sTtJP522/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "HUNTER",
+    "tags": [
+      "Hero",
+      "Thief",
+      "Ranger",
+      "Female"
+    ],
+    "link": "https://drive.google.com/file/d/1rUbruQ4zRukh_qzz7038ETzCHdbmTxSD/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "il1",
+    "tags": [
+      "Misc."
+    ],
+    "link": "https://drive.google.com/file/d/19zZByMq7_gJXI7ovxttFfwFy0TX5sADY/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "schwarzburg-butcher",
+    "tags": [
+      "Hero",
+      "Enemy",
+      "Female",
+      "Warrior"
+    ],
+    "link": "https://drive.google.com/file/d/1FJhZwCdOuRUYbTtAzGWM0KFb_Tvk_cgm/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Skorath_Dual-SwordStand_Unsupported",
+    "tags": [
+      "Enemy"
+    ],
+    "link": "https://drive.google.com/file/d/1qkWDHgKy91T4kA7hiWIkraVFopqSudjy/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Skorath_Dual-SwordStand_Supported",
+    "tags": [
+      "Enemy"
+    ],
+    "link": "https://drive.google.com/file/d/1fe1C8AOJWGO4RQR-mt_4iWcmAovrlTmI/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Archoclonius",
+    "tags": [
+      "Enemy",
+      "Monster",
+      "Dragon",
+      "XL"
+    ],
+    "link": "https://drive.google.com/file/d/1OK19Faq7aEXeozTgpDIn4Qzuv7gpY6ox/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Sup_BlueEyesWhiteDragon",
+    "tags": [
+      "Enemy",
+      "Monster",
+      "Dragon",
+      "Collectible"
+    ],
+    "link": "https://drive.google.com/file/d/1UZPkWa-7LUl4E9yg_8U1yzGE_VPLQKss/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "BlueEyesWhite-Dragon",
+    "tags": [
+      "Enemy",
+      "Monster",
+      "Dragon",
+      "Collectible"
+    ],
+    "link": "https://drive.google.com/file/d/1pm_BMyag512bfLusE69SxHrWITYvyZmm/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "morgana-nsfw",
+    "tags": [
+      "Hero",
+      "Enemy",
+      "Wizard",
+      "Female",
+      "NSFW"
+    ],
+    "link": "https://drive.google.com/file/d/1CjzmmMvnT8S7XUpvNwZbmwLjn9Khtz40/view?usp=drivesdk",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "Test Entry",
+    "tags": [
+      "Test",
+      "Functionality",
+      "AppTool"
+    ],
+    "link": "https://drive.google.com/file/d/1CjzmmMvnT8S7XUpvNwZbmwLjn9Khtz40/view?usp=drivesdk",
     "thumbnail": "https://via.placeholder.com/100"
   }
 ]
