@@ -1,0 +1,51 @@
+[
+  {
+    "filename": "dr-isaac",
+    "tags": [
+      "Hero",
+      "NPC",
+      "Enemy",
+      "Human"
+    ],
+    "link": "https://drive.google.com/uc?id=1D1Ta1G-4hfTAY5ya5kajtIQq1VhDVh5Y&export=download",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "priest",
+    "tags": [
+      "Hero",
+      "Human",
+      "Cleric"
+    ],
+    "link": "https://drive.google.com/uc?id=1vNkkcLALISR2UzhIBXHyZvb9cQkJTQ1U&export=download",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "dwarf-paladin",
+    "tags": [
+      "Hero",
+      "Dwarf",
+      "Warrior"
+    ],
+    "link": "https://drive.google.com/uc?id=1YXRUeBrCl5HUYCtiZh5-p8KfnNFPT9c7&export=download",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "stinger",
+    "tags": [
+      "Enemy",
+      "Monster"
+    ],
+    "link": "https://drive.google.com/uc?id=1Pw8S-JpPHX85ry1TG4ue_pprql7LrhGI&export=download",
+    "thumbnail": "https://via.placeholder.com/100"
+  },
+  {
+    "filename": "goblin-fighter",
+    "tags": [
+      "Enemy",
+      "Goblin"
+    ],
+    "link": "https://drive.google.com/uc?id=162klViKxp4ob3zvRtnx2suSK-Ny4lvQK&export=download",
+    "thumbnail": "https://via.placeholder.com/100"
+  }
+]
