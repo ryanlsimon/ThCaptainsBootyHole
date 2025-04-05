@@ -20,6 +20,16 @@
   <label><input type="checkbox" id="filter-mode-toggle" checked onchange="filterItems()"> Match ALL tags</label><br><br>
   <button onclick="clearTags()">Clear Tags</button>
   <div id="items">Loading files...</div>
+  <div id="modal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.8); color:white; z-index:9999; align-items:center; justify-content:center; padding:1rem;">
+  <div style="background:#1e1e1e; padding:1rem; border-radius:8px; max-width:500px; width:100%;">
+    <button onclick="closeModal()" style="float:right;">X</button>
+    <h2 id="modal-title"></h2>
+    <img id="modal-thumbnail" src="" style="width:100%; margin-bottom:1rem;" />
+    <p id="modal-tags"></p>
+    <a id="modal-link" href="#" target="_blank" download>Download STL</a>
+  </div>
+</div>
+
   <script>
     const jsonUrl = "data.json";
     let data = [];
@@ -76,7 +86,7 @@
         div.innerHTML = `
           <img src="${entry.thumbnail || 'https://via.placeholder.com/100'}" />
           <div>
-            <strong>${entry.filename}</strong><br>
+            <strong onclick='showModal(${JSON.stringify(entry)})' style="cursor:pointer; color:#4CAF50;">${entry.filename}</strong><br>
             <span>${entry.tags.join(', ')}</span><br>
             <a href="${entry.link}" target="_blank" download>Download</a>
           </div>
@@ -94,6 +104,18 @@
       document.getElementById("search-box").value = "";
       filterItems();
     }
+    function showModal(entry) {
+  document.getElementById("modal-title").textContent = entry.filename;
+  document.getElementById("modal-thumbnail").src = entry.thumbnail || "https://via.placeholder.com/400";
+  document.getElementById("modal-tags").textContent = entry.tags.join(", ");
+  document.getElementById("modal-link").href = entry.link;
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
 
     window.addEventListener("DOMContentLoaded", fetchCSVData);
   </script>
