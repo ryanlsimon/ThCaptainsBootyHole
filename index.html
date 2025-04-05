@@ -32,10 +32,13 @@
 </div>
 
   <script>
-    const password = prompt("Enter password to enter the Captain’s Booty Hole:");
-if (password !== "ShiverMeTimbers") {
-  document.body.innerHTML = "<h1 style='color:red;'>Access Denied</h1>";
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const password = prompt("Enter the password:");
+  if (password !== "goldleaf") {
+    document.body.innerHTML = "<h1 style='color:red;'>Access Denied</h1>";
+    throw new Error("Unauthorized access");
+  }
+});
 
     const jsonUrl = "data.json";
     let data = [];
