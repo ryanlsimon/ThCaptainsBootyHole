@@ -31,6 +31,11 @@
 </div>
 
   <script>
+    const password = prompt("Enter password to enter the Captain’s Booty Hole:");
+if (password !== "ShiverMeTimbers") {
+  document.body.innerHTML = "<h1 style='color:red;'>Access Denied</h1>";
+}
+
     const jsonUrl = "data.json";
     let data = [];
 
