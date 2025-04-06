@@ -265,12 +265,25 @@
         const div = document.createElement("div");
         div.className = "item";
 
-        const canvas = document.createElement("canvas");
-        canvas.className = "stl-canvas";
-        canvas.setAttribute("data-filename", entry.filename);
-        canvas.setAttribute("data-link", entry.link);
-        canvas.width = 100;
-        canvas.height = 100;
+        if (entry.thumbnail) {
+          const img = document.createElement("img");
+          img.src = entry.thumbnail;
+          img.alt = entry.filename;
+          img.style.width = "100px";
+          img.style.height = "100px";
+          img.style.borderRadius = "8px";
+          img.style.marginRight = "1rem";
+          img.style.objectFit = "cover";
+          div.appendChild(img);
+        } else {
+          const canvas = document.createElement("canvas");
+          canvas.className = "stl-canvas";
+          canvas.setAttribute("data-filename", entry.filename);
+          canvas.setAttribute("data-link", entry.link);
+          canvas.width = 100;
+          canvas.height = 100;
+          div.appendChild(canvas);
+        }
 
         const content = document.createElement("div");
 
