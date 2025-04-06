@@ -223,18 +223,49 @@
       width: 100%;
       box-shadow: 0 2px 12px rgba(0,0,0,0.5);
     }
+    
+    #grid-lock {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      grid-gap: 12px;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .grid-button {
+      width: 60px;
+      height: 60px;
+      background: #2e2e42;
+      border-radius: 6px;
+      box-shadow: 0 0 6px rgba(157, 121, 214, 0.3);
+      transition: box-shadow 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+
+    .grid-button:active {
+      background: #9d79d6;
+      box-shadow: 0 0 15px #9d79d6;
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
+    
     <div id="entry" style="text-align:center;">
-      <h2>Enter Directory</h2>
-      <div style="max-width: 400px; margin: 0 auto;">
-        <input type="password" id="pw" placeholder="Enter password" />
-        <br>
-        <button onclick="enterApp()">Enter</button>
+      <h2>Access Grid</h2>
+      <div id="grid-lock">
+        <div class="grid-button" data-id="1"></div>
+        <div class="grid-button" data-id="2"></div>
+        <div class="grid-button" data-id="3"></div>
+        <div class="grid-button" data-id="4"></div>
+        <div class="grid-button" data-id="5"></div>
+        <div class="grid-button" data-id="6"></div>
+        <div class="grid-button" data-id="7"></div>
+        <div class="grid-button" data-id="8"></div>
+        <div class="grid-button" data-id="9"></div>
       </div>
-      <p id="msg" style="color:#ff6b6b;"></p>
+      <p id="msg" style="color:#ff6b6b; margin-top: 1rem;"></p>
     </div>
 
     <div id="app" style="display:none;">
@@ -281,6 +312,35 @@
         document.getElementById("msg").textContent = "Incorrect password.";
       }
     }
+    
+    const unlockSequence = ['1', '5', '9', '2'];
+    let inputSequence = [];
+
+    document.querySelectorAll('.grid-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        inputSequence.push(id);
+
+    // Glow the button briefly
+        btn.style.background = "#9d79d6";
+        btn.style.boxShadow = "0 0 15px #9d79d6";
+        setTimeout(() => {
+          btn.style.background = "#2e2e42";
+          btn.style.boxShadow = "0 0 6px rgba(157, 121, 214, 0.3)";
+        }, 200);
+
+    // Check sequence
+        if (inputSequence.length === unlockSequence.length) {
+          if (inputSequence.join('') === unlockSequence.join('')) {
+            document.getElementById("entry").style.display = "none";
+            document.getElementById("app").style.display = "block";
+            fetchCSVData();
+          } else {
+            document.getElementById("msg").textContent = "Access denied.";
+            inputSequence = [];
+          }
+        }
+      });
 
     async function fetchCSVData() {
       try {
