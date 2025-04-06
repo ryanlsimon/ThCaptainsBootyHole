@@ -327,7 +327,6 @@ function renderActiveTags() {
           ? tags.every(tag => entry.tags.includes(tag))
           : tags.length === 0 || tags.some(tag => entry.tags.includes(tag));
         return (nameMatch || tagMatch) && tagCheck;
-        renderActiveTags();
       });
 
       const container = document.getElementById("items");
@@ -380,6 +379,7 @@ function renderActiveTags() {
       if (filtered.length === 0) {
         container.innerHTML = "<p>No files matched your filters.</p>";
       }
+      renderActiveTags();
     }
 
     document.addEventListener("DOMContentLoaded", () => {
