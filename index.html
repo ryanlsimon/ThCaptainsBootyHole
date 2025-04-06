@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="./">
+  <meta charset="UTF-8" />
+  <title>Model Directory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1e1e2f" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #1e1e2f;
+      --card-dark: #2a2a3d;
+      --text-light: #e0dfe6;
+      --accent: #9d79d6;
+      --accent-dark: #7e5ebd;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      margin: 0;
+      padding: 2rem 1rem;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    #grid-lock {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      grid-gap: 12px;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+
+    .grid-button {
+      width: 60px;
+      height: 60px;
+      background: #2e2e42;
+      border-radius: 6px;
+      box-shadow: 0 0 6px rgba(157, 121, 214, 0.3);
+      transition: box-shadow 0.2s, background 0.2s;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .grid-button:active {
+      background: #9d79d6;
+      box-shadow: 0 0 15px #9d79d6;
+    }
+
+    .item {
+      display: flex;
+      align-items: stretch;
+      background: var(--card-dark);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+
+    .item > div {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .item strong {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .item a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: white;
+      background: var(--accent);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-light);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+    }
+
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    #modal > div {
+      background: var(--card-dark);
+      color: var(--text-light);
+      padding: 1.5rem;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="entry" style="text-align:center;">
+      <h2>Access Grid</h2>
+      <div id="grid-lock">
+        <div class="grid-button" data-id="1"></div>
+        <div class="grid-button" data-id="2"></div>
+        <div class="grid-button" data-id="3"></div>
+        <div class="grid-button" data-id="4"></div>
+        <div class="grid-button" data-id="5"></div>
+        <div class="grid-button" data-id="6"></div>
+        <div class="grid-button" data-id="7"></div>
+        <div class="grid-button" data-id="8"></div>
+        <div class="grid-button" data-id="9"></div>
+      </div>
+      <p id="msg" style="color:#ff6b6b; margin-top: 1rem;"></p>
+    </div>
+
+    <div id="app" style="display:none;">
+      <h1>Model Directory</h1>
+      <div class="filter-box">
+        <input type="text" id="search-box" placeholder="Search..." oninput="filterItems()" />
+        <select id="tag-filter" multiple onchange="filterItems()"></select>
+        <label><input type="checkbox" id="filter-mode-toggle" checked onchange="filterItems()"> Match ALL tags</label><br>
+        <button onclick="clearTags()">Clear Filters</button>
+      </div>
+      <div id="items">Loading files...</div>
+    </div>
+
+    <div id="modal">
+      <div>
+        <button onclick="closeModal()" style="float:right;">Close</button>
+        <h2 id="modal-title"></h2>
+        <img id="modal-thumbnail" src="" style="width:100%; margin-bottom:1rem;" />
+        <p id="modal-tags"></p>
+        <p id="modal-details"></p>
+        <a id="modal-link" href="#" target="_blank" download>Download STL</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const jsonUrl = "data.json";
+    let data = [];
+
+    function fetchCSVData() {
+      fetch(jsonUrl)
+        .then(res => res.json())
+        .then(json => {
+          data = json;
+          renderItems();
+        })
+        .catch(err => {
+          document.getElementById("items").innerHTML = "<p style='color:red;'>Failed to load data.json.</p>";
+          console.error("Fetch failed:", err);
+        });
+    }
+
+    function populateTags() {
+      const tagSet = new Set();
+      data.forEach(entry => (entry.tags || []).forEach(tag => tagSet.add(tag)));
+      const filter = document.getElementById("tag-filter");
+      filter.innerHTML = '';
+      Array.from(tagSet).sort().forEach(tag => {
+        const opt = document.createElement("option");
+        opt.value = tag;
+        opt.textContent = tag;
+        filter.appendChild(opt);
+      });
+    }
+
+    function getSelectedTags() {
+      const selected = document.getElementById("tag-filter").selectedOptions;
+      return Array.from(selected).map(opt => opt.value);
+    }
+
+    function clearTags() {
+      const filter = document.getElementById("tag-filter");
+      Array.from(filter.options).forEach(opt => opt.selected = false);
+      document.getElementById("search-box").value = "";
+      filterItems();
+    }
+
+    function filterItems() {
+      const search = document.getElementById("search-box").value.toLowerCase();
+      const tags = getSelectedTags();
+      const matchAll = document.getElementById("filter-mode-toggle").checked;
+
+      const filtered = data.filter(entry => {
+        const nameMatch = entry.filename?.toLowerCase().includes(search);
+        const tagMatch = entry.tags?.some(tag => tag.toLowerCase().includes(search));
+        const tagCheck = matchAll
+          ? tags.every(tag => entry.tags.includes(tag))
+          : tags.length === 0 || tags.some(tag => entry.tags.includes(tag));
+        return (nameMatch || tagMatch) && tagCheck;
+      });
+
+      renderItems(filtered);
+    }
+
+    function renderItems(entries = data) {
+      const container = document.getElementById("items");
+      container.innerHTML = '';
+      data.forEach(entry => {
+        const div = document.createElement("div");
+        div.className = "item";
+
+        const img = document.createElement("img");
+        img.src = entry.thumbnail || "https://via.placeholder.com/100";
+        img.onclick = () => showModal(entry);
+        div.appendChild(img);
+
+        const content = document.createElement("div");
+        content.onclick = (e) => {
+          if (!e.target.closest("a")) showModal(entry);
+        };
+
+        const title = document.createElement("strong");
+        title.textContent = entry.filename;
+
+        const tagContainer = document.createElement("div");
+        (entry.tags || []).forEach(tag => {
+          const span = document.createElement("span");
+          span.className = "tag";
+          span.textContent = tag;
+          tagContainer.appendChild(span);
+        });
+
+        const link = document.createElement("a");
+        link.href = entry.link;
+        link.textContent = "Download";
+        link.target = "_blank";
+        link.download = true;
+
+        content.appendChild(title);
+        content.appendChild(tagContainer);
+        content.appendChild(link);
+        div.appendChild(content);
+        container.appendChild(div);
+      });
+    }
+
+    function showModal(entry) {
+      document.getElementById("modal-title").textContent = entry.filename;
+      document.getElementById("modal-thumbnail").src = entry.thumbnail || "https://via.placeholder.com/400";
+      document.getElementById("modal-tags").textContent = "Tags: " + (entry.tags || []).join(", ");
+      document.getElementById("modal-details").textContent = entry.details || "";
+      document.getElementById("modal-link").href = entry.link;
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const unlockSequence = ['1', '5', '9', '2'];
+      let inputSequence = [];
+
+      document.querySelectorAll('.grid-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          inputSequence.push(id);
+
+          btn.style.background = "#9d79d6";
+          btn.style.boxShadow = "0 0 15px #9d79d6";
+          setTimeout(() => {
+            btn.style.background = "#2e2e42";
+            btn.style.boxShadow = "0 0 6px rgba(157, 121, 214, 0.3)";
+          }, 200);
+
+          if (inputSequence.length === unlockSequence.length) {
+            if (JSON.stringify(inputSequence) === JSON.stringify(unlockSequence)) {
+              document.getElementById("entry").style.display = "none";
+              document.getElementById("app").style.display = "block";
+              fetchCSVData();
+            } else {
+              document.getElementById("msg").textContent = "Access denied.";
+              setTimeout(() => {
+                inputSequence = [];
+                document.getElementById("msg").textContent = "";
+              }, 1000);
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
