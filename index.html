@@ -348,6 +348,8 @@
           const img = document.createElement("img");
           img.src = entry.thumbnail;
           img.alt = entry.filename;
+          img.style.cursor ="pointer";
+          img.onclick = () => showModal(entry);
           div.appendChild(img);
         } else {
           const canvas = document.createElement("canvas");
@@ -360,10 +362,15 @@
         }
 
         const content = document.createElement("div");
+        content.style.cursor = "pointer";
+        content.onclick = (e) => {
+          if (!e.target.closest("a")){
+            showModal(entry);
+          }
+        };
 
         const title = document.createElement("strong");
         title.textContent = entry.filename;
-        title.onclick = () => showModal(entry);
 
         const tagContainer = document.createElement("div");
         entry.tags.forEach(tag => {
