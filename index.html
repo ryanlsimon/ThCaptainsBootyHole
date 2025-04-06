@@ -18,6 +18,10 @@
       --accent-dark: #7e5ebd;
     }
 
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg-dark);
@@ -25,6 +29,7 @@
       margin: 0;
       padding: 2rem 1rem;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     h1, h2 {
@@ -46,10 +51,9 @@
       margin-bottom: 2rem;
     }
 
-    input[type="text"], input[type="password"], select {
+    input[type="text"], input[type="password"] {
       width: 100%;
       max-width: 100%;
-      box-sizing: border-box;
       padding: 0.75rem;
       margin-bottom: 1rem;
       font-size: 1rem;
@@ -127,6 +131,29 @@
       margin-right: 5px;
       margin-bottom: 5px;
       border-radius: 4px;
+      border: 1px solid transparent; /* Let JS handle color */
+    }
+
+    .checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .checkboxes label {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .checkboxes input[type="checkbox"] {
+      margin-right: 6px;
+      accent-color: var(--accent);
     }
 
     #modal {
@@ -149,22 +176,17 @@
       width: 100%;
       box-shadow: 0 2px 12px rgba(0,0,0,0.5);
     }
-    
-    #pw {
-      max-width: 400px;
-      width: 100%;
-      margin: 0 auto;
-      display: block;
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <div id="entry" style="text-align:center;">
       <h2>Enter Directory</h2>
-      <input type="password" id="pw" placeholder="Enter password" />
-      <br>
-      <button onclick="enterApp()">Enter</button>
+      <div style="max-width: 400px; margin: 0 auto;">
+        <input type="password" id="pw" placeholder="Enter password" />
+        <br>
+        <button onclick="enterApp()">Enter</button>
+      </div>
       <p id="msg" style="color:#ff6b6b;"></p>
     </div>
 
@@ -173,7 +195,7 @@
 
       <div class="filter-box">
         <input type="text" id="search-box" placeholder="Search..." oninput="filterItems()" />
-        <select id="tag-filter" multiple onchange="filterItems()"></select>
+        <div id="tag-checkboxes" class="checkboxes"></div>
         <label><input type="checkbox" id="filter-mode-toggle" checked onchange="filterItems()"> Match ALL tags</label><br>
         <button onclick="clearTags()">Clear Filters</button>
       </div>
@@ -193,6 +215,19 @@
   </div>
 
   <script>
+    const tagColors = {
+      "28mm": "#8b5c2c",
+      "32mm": "#4e88af",
+      "hero": "#9d79d6",
+      "enemy": "#d66464",
+      "npc": "#6cc48c",
+      "monster": "#dbb95c",
+      "vehicle": "#a68fdb",
+      "magic": "#a14cd4",
+      "undead": "#bc5f5f",
+      "beast": "#df8e5d"
+    };
+
     function enterApp() {
       const pw = document.getElementById("pw").value;
       if (pw === "goldleaf") {
@@ -206,19 +241,6 @@
 
     const jsonUrl = "data.json";
     let data = [];
-
-    const tagColors = {
-      "28mm": "#8b5c2c",
-      "32mm": "#4e88af",
-      "hero": "#9d79d6",
-      "enemy": "#d66464",
-      "npc": "#6cc48c",
-      "monster": "#dbb95c",
-      "vehicle": "#a68fdb",
-      "magic": "#a14cd4",
-      "undead": "#bc5f5f",
-      "beast": "#df8e5d"
-    };
 
     async function fetchCSVData() {
       try {
@@ -237,19 +259,27 @@
       data.forEach(entry => {
         (entry.tags || []).forEach(tag => tagSet.add(tag));
       });
-      const filter = document.getElementById("tag-filter");
-      filter.innerHTML = '';
+
+      const checkboxContainer = document.getElementById("tag-checkboxes");
+      checkboxContainer.innerHTML = '';
+
       Array.from(tagSet).sort().forEach(tag => {
-        const opt = document.createElement("option");
-        opt.value = tag;
-        opt.textContent = tag;
-        filter.appendChild(opt);
+        const label = document.createElement("label");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.value = tag;
+        checkbox.onchange = filterItems;
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(tag));
+        checkboxContainer.appendChild(label);
       });
     }
 
     function getSelectedTags() {
-      const selected = document.getElementById("tag-filter").selectedOptions;
-      return Array.from(selected).map(opt => opt.value);
+      const checkboxes = document.querySelectorAll('#tag-checkboxes input[type="checkbox"]');
+      return Array.from(checkboxes)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
     }
 
     function filterItems() {
@@ -299,7 +329,7 @@
           const span = document.createElement("span");
           span.className = "tag";
           span.textContent = tag;
-          span.style.setProperty("border", `1px solid ${tagColors[tag] || "#888"}`, "important");
+          span.style.border = `1px solid ${tagColors[tag] || "#888"}`;
           tagContainer.appendChild(span);
         });
 
@@ -323,8 +353,8 @@
     }
 
     function clearTags() {
-      const filter = document.getElementById("tag-filter");
-      Array.from(filter.options).forEach(opt => opt.selected = false);
+      const checkboxes = document.querySelectorAll('#tag-checkboxes input[type="checkbox"]');
+      checkboxes.forEach(cb => cb.checked = false);
       document.getElementById("search-box").value = "";
       filterItems();
     }
