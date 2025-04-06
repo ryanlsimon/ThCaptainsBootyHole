@@ -78,6 +78,41 @@
       background: var(--accent-dark);
     }
 
+    .tag-pill {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-light);
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      margin: 4px 6px 4px 0;
+      border-radius: 999px;
+      border: 1px solid #888;
+      cursor: default;
+    }
+
+    .tag-pill .remove {
+      margin-left: 6px;
+      cursor: pointer;
+      color: #ff6b6b;
+    }
+
+    .tag-panel {
+      display: none;
+      margin: 1rem 0;
+      padding: 1rem;
+      background: #252538;
+      border-radius: 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+    }
+
+    .tag-panel label {
+      display: block;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+
     .item {
       display: flex;
       align-items: flex-start;
@@ -122,40 +157,6 @@
       text-decoration: none;
     }
 
-    .tag {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text-light);
-      font-size: 0.75rem;
-      padding: 3px 8px;
-      margin-right: 5px;
-      margin-bottom: 5px;
-      border-radius: 4px;
-      border: 1px solid transparent; /* Let JS handle color */
-    }
-
-    .checkboxes {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .checkboxes label {
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 4px 8px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-
-    .checkboxes input[type="checkbox"] {
-      margin-right: 6px;
-      accent-color: var(--accent);
-    }
-
     #modal {
       display: none;
       position: fixed;
@@ -195,7 +196,12 @@
 
       <div class="filter-box">
         <input type="text" id="search-box" placeholder="Search..." oninput="filterItems()" />
-        <div id="tag-checkboxes" class="checkboxes"></div>
+
+        <div id="selected-tags"></div>
+        <button onclick="toggleTagPanel()">Filter Tags</button>
+
+        <div id="tag-panel" class="tag-panel"></div>
+
         <label><input type="checkbox" id="filter-mode-toggle" checked onchange="filterItems()"> Match ALL tags</label><br>
         <button onclick="clearTags()">Clear Filters</button>
       </div>
@@ -215,18 +221,8 @@
   </div>
 
   <script>
-    const tagColors = {
-      "28mm": "#8b5c2c",
-      "32mm": "#4e88af",
-      "hero": "#9d79d6",
-      "enemy": "#d66464",
-      "npc": "#6cc48c",
-      "monster": "#dbb95c",
-      "vehicle": "#a68fdb",
-      "magic": "#a14cd4",
-      "undead": "#bc5f5f",
-      "beast": "#df8e5d"
-    };
+    let data = [];
+    const jsonUrl = "data.json";
 
     function enterApp() {
       const pw = document.getElementById("pw").value;
@@ -238,9 +234,6 @@
         document.getElementById("msg").textContent = "Incorrect password.";
       }
     }
-
-    const jsonUrl = "data.json";
-    let data = [];
 
     async function fetchCSVData() {
       try {
@@ -256,36 +249,43 @@
 
     function populateTags() {
       const tagSet = new Set();
-      data.forEach(entry => {
-        (entry.tags || []).forEach(tag => tagSet.add(tag));
-      });
+      data.forEach(entry => (entry.tags || []).forEach(tag => tagSet.add(tag)));
 
-      const checkboxContainer = document.getElementById("tag-checkboxes");
-      checkboxContainer.innerHTML = '';
-
+      const panel = document.getElementById("tag-panel");
+      panel.innerHTML = '';
       Array.from(tagSet).sort().forEach(tag => {
         const label = document.createElement("label");
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        checkbox.value = tag;
-        checkbox.onchange = filterItems;
-        label.appendChild(checkbox);
-        label.appendChild(document.createTextNode(tag));
-        checkboxContainer.appendChild(label);
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.value = tag;
+        cb.onchange = filterItems;
+        label.appendChild(cb);
+        label.appendChild(document.createTextNode(" " + tag));
+        panel.appendChild(label);
       });
     }
 
     function getSelectedTags() {
-      const checkboxes = document.querySelectorAll('#tag-checkboxes input[type="checkbox"]');
-      return Array.from(checkboxes)
-        .filter(cb => cb.checked)
-        .map(cb => cb.value);
+      const cbs = document.querySelectorAll('#tag-panel input[type="checkbox"]');
+      return Array.from(cbs).filter(cb => cb.checked).map(cb => cb.value);
     }
 
     function filterItems() {
       const search = document.getElementById("search-box").value.toLowerCase();
       const tags = getSelectedTags();
       const matchAll = document.getElementById("filter-mode-toggle").checked;
+      const container = document.getElementById("items");
+      container.innerHTML = '';
+
+      // Update selected pills
+      const pillBox = document.getElementById("selected-tags");
+      pillBox.innerHTML = '';
+      tags.forEach(tag => {
+        const pill = document.createElement("span");
+        pill.className = "tag-pill";
+        pill.innerHTML = `${tag}<span class="remove" onclick="removeTag('${tag}')">×</span>`;
+        pillBox.appendChild(pill);
+      });
 
       const filtered = data.filter(entry => {
         const nameMatch = entry.filename?.toLowerCase().includes(search);
@@ -296,8 +296,10 @@
         return (nameMatch || tagMatch) && tagCheck;
       });
 
-      const container = document.getElementById("items");
-      container.innerHTML = '';
+      if (filtered.length === 0) {
+        container.innerHTML = "<p>No files matched your filters.</p>";
+        return;
+      }
 
       filtered.forEach(entry => {
         const div = document.createElement("div");
@@ -327,9 +329,8 @@
         const tagContainer = document.createElement("div");
         entry.tags.forEach(tag => {
           const span = document.createElement("span");
-          span.className = "tag";
+          span.className = "tag-pill";
           span.textContent = tag;
-          span.style.border = `1px solid ${tagColors[tag] || "#888"}`;
           tagContainer.appendChild(span);
         });
 
@@ -346,16 +347,23 @@
         div.appendChild(content);
         container.appendChild(div);
       });
+    }
 
-      if (filtered.length === 0) {
-        container.innerHTML = "<p>No files matched your filters.</p>";
-      }
+    function toggleTagPanel() {
+      const panel = document.getElementById("tag-panel");
+      panel.style.display = panel.style.display === "block" ? "none" : "block";
+    }
+
+    function removeTag(tag) {
+      const checkbox = [...document.querySelectorAll('#tag-panel input[type="checkbox"]')]
+        .find(cb => cb.value === tag);
+      if (checkbox) checkbox.checked = false;
+      filterItems();
     }
 
     function clearTags() {
-      const checkboxes = document.querySelectorAll('#tag-checkboxes input[type="checkbox"]');
-      checkboxes.forEach(cb => cb.checked = false);
       document.getElementById("search-box").value = "";
+      document.querySelectorAll('#tag-panel input[type="checkbox"]').forEach(cb => cb.checked = false);
       filterItems();
     }
 
