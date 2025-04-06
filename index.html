@@ -177,6 +177,12 @@
       width: 100%;
       box-shadow: 0 2px 12px rgba(0,0,0,0.5);
     }
+
+    .small-btn {
+      font-size: 0.9rem;
+      padding: 0.5rem 1rem;
+    }
+    
   </style>
 </head>
 <body>
@@ -198,13 +204,15 @@
         <input type="text" id="search-box" placeholder="Search..." oninput="filterItems()" />
 
         <div id="selected-tags"></div>
-        <button onclick="toggleTagPanel()">Filter Tags</button>
+        <button onclick="toggleTagPanel()">Filters</button>
 
         <div id="tag-panel" class="tag-panel"></div>
 
         <label><input type="checkbox" id="filter-mode-toggle" checked onchange="filterItems()"> Match ALL tags</label><br>
         <button onclick="clearTags()">Clear Filters</button>
       </div>
+
+      <button class="small-btn" onclick="toggleTagPanel()">Filters</button>
 
       <div id="items">Loading files...</div>
 
