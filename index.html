@@ -217,15 +217,13 @@
         <input type="text" id="search-box" placeholder="Search..." oninput="filterItems()" />
 
         <div id="selected-tags"></div>
-        <button class ="small-btn" onclick="toggleTagPanel()">Filters</button>
+        <button onclick="toggleTagPanel()">Filters</button>
 
         <div id="tag-panel" class="tag-panel"></div>
 
         <label><input type="checkbox" id="filter-mode-toggle" checked onchange="filterItems()"> Match ALL tags</label><br>
-        <button onclick="clearTags()">Clear Filters</button>
+        <button class ="small-btn" onclick="clearTags()">Clear Filters</button>
       </div>
-
-      <button class="small-btn" onclick="toggleTagPanel()">Filters</button>
 
       <div id="items">Loading files...</div>
 
