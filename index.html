@@ -178,15 +178,23 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.5);
     }
 
-    .small-btn {
-      font-size: 0.9rem !important;
-      padding: 0.5rem 1rem !important;
+    button.small-btn {
+      all:unset;
+      font-family: 'Inter' sans-serif;
+      background: var(--accent);
+      color:white;
+      font-size: 0.85rem !important;
+      padding: 0.4rem 0.9rem !important;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-block;
+      transition: background 0.2s ease;
+    }
+    button.small-btn:hover{
+      background: var(--accent-dark);
     }
 
-    .filter-box .small-btn {
-      font-size: 0.85rem;
-      padding: 0.4rem 0.9;
-    }
   
   </style>
 </head>
@@ -209,7 +217,7 @@
         <input type="text" id="search-box" placeholder="Search..." oninput="filterItems()" />
 
         <div id="selected-tags"></div>
-        <button onclick="toggleTagPanel()">Filters</button>
+        <button class ="small-btn" onclick="toggleTagPanel()">Filters</button>
 
         <div id="tag-panel" class="tag-panel"></div>
 
