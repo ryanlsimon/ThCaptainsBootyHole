@@ -118,13 +118,14 @@
 
     .tag {
       display: inline-block;
-      background: var(--tag-bg);
-      color: #c0c0dd;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-light);
       font-size: 0.75rem;
       padding: 3px 8px;
       margin-right: 5px;
       margin-bottom: 5px;
       border-radius: 4px;
+      border: 1px solid #888; /* gets overridden inline */
     }
 
     #modal {
@@ -209,6 +210,19 @@
         console.error("Fetch failed:", err);
       }
     }
+    const tagColors = {
+      "28mm": "#8b5c2c",
+      "32mm": "#4e88af",
+      "hero": "#9d79d6",
+      "enemy": "#d66464",
+      "npc": "#6cc48c",
+      "monster": "#dbb95c",
+      "vehicle": "#a68fdb",
+      "magic": "#a14cd4",
+      "undead": "#bc5f5f",
+      "beast": "#df8e5d"
+    // Add more as needed
+    };
 
     function populateTags() {
       const tagSet = new Set();
@@ -252,12 +266,17 @@
           <canvas class="stl-canvas" data-filename="${entry.filename}" data-link="${entry.link}" width="100" height="100"></canvas>
           <div>
             <strong onclick='showModal(${JSON.stringify(entry)})'>${entry.filename}</strong><br>
-            <div>${entry.tags.map(tag => `<span class='tag'>${tag}</span>`).join(' ')}</div>
+          <div>
+            ${entry.tags.map(tag => {
+              const borderColor = tagColors[tag] || "#888";
+              return `<span class='tag' style="border: 1px solid ${borderColor};">${tag}</span>`;
+            }).join(' ')}
+          </div>
             <a href="${entry.link}" target="_blank" download>Download</a>
           </div>
         `;
         container.appendChild(div);
-      });
+        });
 
       if (filtered.length === 0) {
         container.innerHTML = "<p>No files matched your filters.</p>";
