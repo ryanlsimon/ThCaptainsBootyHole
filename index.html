@@ -143,6 +143,17 @@
   border: 1px solid #888;
 }
 
+.active-tag {
+  display: inline-block;
+  background-color: #9d79d6;
+  color: white;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 20px;
+  margin: 3px;
+  cursor: pointer;
+}
+
 #modal {
   display: none;
   position: fixed;
@@ -188,6 +199,7 @@
 <div id="filter-controls" style="display:none; margin-top:1rem;">
 <input id="search-box" oninput="filterItems()" placeholder="Search..." type="text"/>
 <select id="tag-filter" multiple="" onchange="filterItems()"></select>
+<div id="active-tags" style="margin: 0.5rem 0;"></div>
 <label style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 0.8rem;"><input checked="" id="filter-mode-toggle" onchange="filterItems()" type="checkbox"/> Match ALL tags</label><br/>
 <button onclick="clearTags()" style="margin-top:0.5rem; background:#555;">Clear Filters</button>
 </div>
@@ -227,6 +239,26 @@ const tagColors = {
   Dwarf: "#cb935e",
   Elf: "#86cdb0"
 };
+
+function renderActiveTags() {
+  const activeTagsContainer = document.getElementById("active-tags");
+  const selectedTags = getSelectedTags();
+  activeTagsContainer.innerHTML = "";
+
+  selectedTags.forEach(tag => {
+    const span = document.createElement("span");
+    span.className = "active-tag";
+    span.textContent = tag + " ✕";
+    span.onclick = () => {
+      const select = document.getElementById("tag-filter");
+      Array.from(select.options).forEach(opt => {
+        if (opt.value === tag) opt.selected = false;
+      });
+      filterItems();
+    };
+    activeTagsContainer.appendChild(span);
+  });
+}
 
 
     function toggleFilters() {
@@ -295,6 +327,7 @@ const tagColors = {
           ? tags.every(tag => entry.tags.includes(tag))
           : tags.length === 0 || tags.some(tag => entry.tags.includes(tag));
         return (nameMatch || tagMatch) && tagCheck;
+        renderActiveTags();
       });
 
       const container = document.getElementById("items");
