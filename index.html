@@ -6,46 +6,60 @@
   <title>Model Directory</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#f4f4f9" />
+  <meta name="theme-color" content="#1e1e2f" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-dark: #1e1e2f;
+      --card-dark: #2a2a3d;
+      --text-light: #e0dfe6;
+      --accent: #9d79d6;
+      --accent-dark: #7e5ebd;
+      --tag-bg: #3a3a50;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: #f4f4f9;
-      color: #222;
+      background: var(--bg-dark);
+      color: var(--text-light);
       margin: 0;
       padding: 2rem 1rem;
       line-height: 1.6;
     }
-    h1 {
-      font-size: 2rem;
+
+    h1, h2 {
+      color: var(--accent);
       text-align: center;
-      color: #2b2b2b;
       margin-bottom: 2rem;
     }
+
     .container {
       max-width: 900px;
       margin: 0 auto;
     }
+
     .filter-box {
-      background: #ffffff;
+      background: var(--card-dark);
       border-radius: 10px;
       padding: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
       margin-bottom: 2rem;
     }
+
     input[type="text"], input[type="password"], select {
       width: 100%;
       padding: 0.75rem;
       margin-bottom: 1rem;
       font-size: 1rem;
-      border: 1px solid #ccc;
+      border: 1px solid #444;
       border-radius: 6px;
-      background: #fff;
+      background: #2f2f42;
+      color: var(--text-light);
     }
+
     button {
-      background: #3f51b5;
+      background: var(--accent);
       color: white;
       padding: 0.7rem 1.4rem;
       font-size: 1rem;
@@ -54,55 +68,65 @@
       cursor: pointer;
       transition: background 0.2s ease;
     }
+
     button:hover {
-      background: #303f9f;
+      background: var(--accent-dark);
     }
+
     .item {
       display: flex;
       align-items: flex-start;
-      background: #ffffff;
+      background: var(--card-dark);
       padding: 1rem;
       margin-bottom: 1.5rem;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-      transition: transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transform: perspective(600px) translateZ(0);
     }
+
     .item:hover {
-      transform: translateY(-2px);
+      transform: perspective(600px) rotateX(1deg) rotateY(1deg) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
     }
+
     .item canvas {
       width: 100px;
       height: 100px;
       border-radius: 8px;
       margin-right: 1rem;
-      background: #f0f0f0;
+      background: #1a1a25;
     }
+
     .item strong {
       font-size: 1.1rem;
-      color: #3f51b5;
+      color: var(--accent);
       cursor: pointer;
       display: inline-block;
       margin-bottom: 0.5rem;
     }
+
     .item a {
       display: inline-block;
       margin-top: 0.5rem;
       color: #ffffff;
-      background: #3f51b5;
+      background: var(--accent);
       padding: 0.4rem 0.8rem;
       border-radius: 6px;
       text-decoration: none;
     }
+
     .tag {
       display: inline-block;
-      background: #e0e0e0;
-      color: #444;
+      background: var(--tag-bg);
+      color: #c0c0dd;
       font-size: 0.75rem;
       padding: 3px 8px;
       margin-right: 5px;
       margin-bottom: 5px;
       border-radius: 4px;
     }
+
     #modal {
       display: none;
       position: fixed;
@@ -113,14 +137,15 @@
       justify-content: center;
       padding: 1rem;
     }
+
     #modal > div {
-      background: white;
-      color: #222;
+      background: var(--card-dark);
+      color: var(--text-light);
       padding: 1.5rem;
       border-radius: 10px;
       max-width: 500px;
       width: 100%;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.5);
     }
   </style>
 </head>
@@ -131,7 +156,7 @@
       <input type="password" id="pw" placeholder="Enter password" />
       <br>
       <button onclick="enterApp()">Enter</button>
-      <p id="msg" style="color:red;"></p>
+      <p id="msg" style="color:#ff6b6b;"></p>
     </div>
 
     <div id="app" style="display:none;">
@@ -158,10 +183,6 @@
     </div>
   </div>
 
-  <!-- Three.js Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/loaders/STLLoader.js"></script>
-
   <script>
     function enterApp() {
       const pw = document.getElementById("pw").value;
@@ -174,7 +195,7 @@
       }
     }
 
-    const jsonUrl = "https://github.com/ryanlsimon/ThCaptainsBootyHole/blob/main/data.json";";
+    const jsonUrl = "data.json";
     let data = [];
 
     async function fetchCSVData() {
@@ -241,48 +262,6 @@
       if (filtered.length === 0) {
         container.innerHTML = "<p>No files matched your filters.</p>";
       }
-
-      renderSTLThumbnails();
-    }
-
-    function renderSTLThumbnails() {
-      const canvases = document.querySelectorAll('.stl-canvas');
-
-      canvases.forEach(canvas => {
-        const fileUrl = canvas.dataset.link;
-        const width = canvas.width;
-        const height = canvas.height;
-
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        renderer.setSize(width, height);
-        camera.position.z = 70;
-
-        const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(0, 0, 100).normalize();
-        scene.add(light);
-
-        const loader = new THREE.STLLoader();
-        loader.load(fileUrl, geometry => {
-          const material = new THREE.MeshStandardMaterial({ color: 0x888888 });
-          const mesh = new THREE.Mesh(geometry, material);
-
-          geometry.computeBoundingBox();
-          const box = geometry.boundingBox;
-          const size = new THREE.Vector3();
-          box.getSize(size);
-          const center = new THREE.Vector3();
-          box.getCenter(center);
-          mesh.position.sub(center);
-
-          const maxDim = Math.max(size.x, size.y, size.z);
-          camera.position.z = maxDim * 1.5;
-
-          scene.add(mesh);
-          renderer.render(scene, camera);
-        });
-      });
     }
 
     function clearTags() {
