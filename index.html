@@ -125,7 +125,7 @@
       margin-right: 5px;
       margin-bottom: 5px;
       border-radius: 4px;
-      /* border removed to allow JS to control it */
+      /* JS will control the border dynamically */
     }
 
     #modal {
@@ -283,7 +283,7 @@
           const span = document.createElement("span");
           span.className = "tag";
           span.textContent = tag;
-          span.style.border = `1px solid ${tagColors[tag] || "#888"}`;
+          span.style.setProperty("border", `1px solid ${tagColors[tag] || "#888"}`, "important");
           tagContainer.appendChild(span);
         });
 
