@@ -16,7 +16,6 @@
       --text-light: #e0dfe6;
       --accent: #9d79d6;
       --accent-dark: #7e5ebd;
-      --tag-bg: #3a3a50;
     }
 
     body {
@@ -90,11 +89,12 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
     }
 
-    .item canvas {
+    .item img, .item canvas {
       width: 100px;
       height: 100px;
       border-radius: 8px;
       margin-right: 1rem;
+      object-fit: cover;
       background: #1a1a25;
     }
 
@@ -125,7 +125,6 @@
       margin-right: 5px;
       margin-bottom: 5px;
       border-radius: 4px;
-      /* JS will control the border dynamically */
     }
 
     #modal {
@@ -269,11 +268,6 @@
           const img = document.createElement("img");
           img.src = entry.thumbnail;
           img.alt = entry.filename;
-          img.style.width = "100px";
-          img.style.height = "100px";
-          img.style.borderRadius = "8px";
-          img.style.marginRight = "1rem";
-          img.style.objectFit = "cover";
           div.appendChild(img);
         } else {
           const canvas = document.createElement("canvas");
@@ -310,7 +304,6 @@
         content.appendChild(tagContainer);
         content.appendChild(link);
 
-        div.appendChild(canvas);
         div.appendChild(content);
         container.appendChild(div);
       });
