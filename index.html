@@ -249,6 +249,8 @@ function renderActiveTags() {
     const span = document.createElement("span");
     span.className = "active-tag";
     span.textContent = tag + " ✕";
+    span.style.backgroundColor = tagColors [tag] ||"666";
+    span.style.color = "#fff";
     span.onclick = () => {
       const select = document.getElementById("tag-filter");
       Array.from(select.options).forEach(opt => {
