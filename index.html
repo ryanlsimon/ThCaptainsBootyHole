@@ -94,14 +94,16 @@
     }
 
     .tag {
-      display: inline-block;
-      background: rgba(255,255,255,0.05);
-      color: #e0dfe6;
-      font-size: 0.75rem;
-      padding: 3px 8px;
-      margin-right: 5px;
-      border-radius: 4px;
-    }
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.05);
+        color: #e0dfe6;
+        font-size: 0.75rem;
+        padding: 3px 8px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        border-radius: 4px;
+        border: 1px solid #888; /* default, overridden by inline style */
+        }
 
     #modal {
       display: none;
@@ -194,6 +196,26 @@
 <script>
     const jsonUrl = "data.json";
     let data = [];
+    
+    const tagColors = {
+  Hero: "#9d79d6",
+  Enemy: "#d66464",
+  NPC: "#6cc48c",
+  Human: "#aaa",
+  Monster: "#ff8844",
+  Warrior: "#7db9e8",
+  Undead: "#bc5f5f",
+  Accessory: "#a1a1a1",
+  Animal: "#df8e5d",
+  Male: "#9ac",
+  Female: "#d7a",
+  Wizard: "#a14cd4",
+  Cleric: "#5fbccc",
+  Orc: "#74a05d",
+  Dwarf: "#cb935e",
+  Elf: "#86cdb0"
+  // Add more as needed
+};
 
     function toggleFilters() {
       const fc = document.getElementById("filter-controls");
@@ -284,11 +306,14 @@
         const tagContainer = document.createElement("div");
         (entry.tags || []).forEach(tag => {
           const span = document.createElement("span");
+          (entry.tags || []).forEach(tag => {
+          const span = document.createElement("span");
           span.className = "tag";
           span.textContent = tag;
+          span.style.border = `1px solid ${tagColors[tag] || "#888"}`;
           tagContainer.appendChild(span);
         });
-
+          
         const link = document.createElement("a");
         link.href = entry.link;
         link.textContent = "Download";
