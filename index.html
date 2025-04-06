@@ -248,6 +248,7 @@
       const search = document.getElementById("search-box").value.toLowerCase();
       const tags = getSelectedTags();
       const matchAll = document.getElementById("filter-mode-toggle").checked;
+
       const filtered = data.filter(entry => {
         const nameMatch = entry.filename?.toLowerCase().includes(search);
         const tagMatch = entry.tags?.some(tag => tag.toLowerCase().includes(search));
@@ -256,6 +257,55 @@
           : tags.length === 0 || tags.some(tag => entry.tags.includes(tag));
         return (nameMatch || tagMatch) && tagCheck;
       });
+
+      const container = document.getElementById("items");
+      container.innerHTML = '';
+
+      filtered.forEach(entry => {
+        const div = document.createElement("div");
+        div.className = "item";
+
+        const canvas = document.createElement("canvas");
+        canvas.className = "stl-canvas";
+        canvas.setAttribute("data-filename", entry.filename);
+        canvas.setAttribute("data-link", entry.link);
+        canvas.width = 100;
+        canvas.height = 100;
+
+        const content = document.createElement("div");
+
+        const title = document.createElement("strong");
+        title.textContent = entry.filename;
+        title.onclick = () => showModal(entry);
+
+        const tagContainer = document.createElement("div");
+        entry.tags.forEach(tag => {
+          const span = document.createElement("span");
+          span.className = "tag";
+          span.textContent = tag;
+          span.style.border = `1px solid ${tagColors[tag] || "#888"}`;
+          tagContainer.appendChild(span);
+        });
+
+        const link = document.createElement("a");
+        link.href = entry.link;
+        link.target = "_blank";
+        link.download = true;
+        link.textContent = "Download";
+
+        content.appendChild(title);
+        content.appendChild(tagContainer);
+        content.appendChild(link);
+
+        div.appendChild(canvas);
+        div.appendChild(content);
+        container.appendChild(div);
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = "<p>No files matched your filters.</p>";
+      }
+    }
 
       const container = document.getElementById("items");
       container.innerHTML = '';
