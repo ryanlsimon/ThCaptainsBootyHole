@@ -177,25 +177,6 @@
       width: 100%;
       box-shadow: 0 2px 12px rgba(0,0,0,0.5);
     }
-
-    button.small-btn {
-      all:unset;
-      font-family: 'Inter' sans-serif;
-      background: var(--accent);
-      color:white;
-      font-size: 0.85rem !important;
-      padding: 0.4rem 0.9rem !important;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      display: inline-block;
-      transition: background 0.2s ease;
-    }
-    button.small-btn:hover{
-      background: var(--accent-dark);
-    }
-
-  
   </style>
 </head>
 <body>
@@ -217,12 +198,12 @@
         <input type="text" id="search-box" placeholder="Search..." oninput="filterItems()" />
 
         <div id="selected-tags"></div>
-        <button onclick="toggleTagPanel()">Filters</button>
+        <button onclick="toggleTagPanel()">Filter Tags</button>
 
         <div id="tag-panel" class="tag-panel"></div>
 
         <label><input type="checkbox" id="filter-mode-toggle" checked onchange="filterItems()"> Match ALL tags</label><br>
-        <button class ="small-btn" onclick="clearTags()">Clear Filters</button>
+        <button onclick="clearTags()">Clear Filters</button>
       </div>
 
       <div id="items">Loading files...</div>
