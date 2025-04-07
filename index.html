@@ -360,12 +360,13 @@ function renderActiveTags() {
         const details = document.createElement("p");
 details.textContent = entry.details || "";
 details.className = "card-details"; // optional for styling
-content.appendChild(details);
+
     
         
 
         content.appendChild(title);
         content.appendChild(tagContainer);
+        content.appendChild(details);
 
         div.appendChild(img);
         div.appendChild(content);
