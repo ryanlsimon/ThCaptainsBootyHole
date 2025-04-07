@@ -69,6 +69,14 @@
       padding: 0.5rem 1rem;
       cursor: pointer;
     }
+    
+    .download-btn {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
     input[type="text"], select {
       width: 100%;
@@ -369,6 +377,7 @@ function renderActiveTags() {
         link.textContent = "Download";
         link.target = "_blank";
         link.download = true;
+        link.className = "download-btn";
         
 
         content.appendChild(title);
