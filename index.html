@@ -71,11 +71,21 @@
     }
     
     .download-btn {
-  font-size: 0.5rem;
-  padding: 0.25rem 0.5rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 1.2rem; /* adjust to taste */
+  background: none;
+  border: 2px solid #b084f7;
+  color: #b084f7;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, color 0.2s;
+}
+
+.download-btn:hover {
+  background: #b084f7;
+  color: black;
 }
 
     input[type="text"], select {
@@ -373,11 +383,12 @@ function renderActiveTags() {
     
         
         const link = document.createElement("a");
-        link.href = entry.link;
-        link.textContent = "Download";
-        link.target = "_blank";
-        link.download = true;
-        link.className = "download-btn";
+link.href = entry.link;
+link.innerHTML = "&#8681;"; // Unicode down arrow
+link.setAttribute("aria-label", "Download STL");
+link.target = "_blank";
+link.download = true;
+link.className = "download-btn";
         
 
         content.appendChild(title);
