@@ -1,25 +1,27 @@
 [
   {
-    "filename": "dr-isaac",
+    "filename": "Dr. Isaac",
     "tags": [
       "Hero",
       "NPC",
       "Enemy",
-      "Human"
+      "Human",
+      "75mm"
     ],
     "link": "https://drive.google.com/file/d/1D1Ta1G-4hfTAY5ya5kajtIQq1VhDVh5Y/view?usp=drivesdk",
     "thumbnail": "IMG_5618.jpeg",
-    "details": "Plague Doctor Character. This is a test detail"
+    "details": "Creator: Midas Forge, 7 files, 75mm"
   },
   {
-    "filename": "priest",
+    "filename": "Bald Priest",
     "tags": [
       "Hero",
       "Human",
       "Cleric"
     ],
     "link": "https://drive.google.com/file/d/1vNkkcLALISR2UzhIBXHyZvb9cQkJTQ1U/view?usp=drivesdk",
-    "thumbnail": "https://via.placeholder.com/100"
+    "thumbnail": "https://via.placeholder.com/100",
+    "details": "STL Miniatures, 4 files"
   },
   {
     "filename": "dwarf-paladin",
@@ -29,16 +31,19 @@
       "Warrior"
     ],
     "link": "https://drive.google.com/file/d/1YXRUeBrCl5HUYCtiZh5-p8KfnNFPT9c7/view?usp=drivesdk",
-    "thumbnail": "https://via.placeholder.com/100"
+    "thumbnail": "https://via.placeholder.com/100",
+    "details": "My3DPrintForge, 5 files"
   },
   {
     "filename": "stinger",
     "tags": [
       "Enemy",
-      "Monster"
+      "Monster",
+      "Demon"
     ],
     "link": "https://drive.google.com/file/d/1Pw8S-JpPHX85ry1TG4ue_pprql7LrhGI/view?usp=drivesdk",
-    "thumbnail": "https://via.placeholder.com/100"
+    "thumbnail": "https://via.placeholder.com/100",
+    "details": "Matstation, 15 files"
   },
   {
     "filename": "goblin-fighter",
