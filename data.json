@@ -24,7 +24,7 @@
     "details": "STL Miniatures, 4 files"
   },
   {
-    "filename": "dwarf-paladin",
+    "filename": "Dwarf Paladin",
     "tags": [
       "Hero",
       "Dwarf",
@@ -35,7 +35,7 @@
     "details": "My3DPrintForge, 5 files"
   },
   {
-    "filename": "stinger",
+    "filename": "Stinger",
     "tags": [
       "Enemy",
       "Monster",
@@ -46,7 +46,7 @@
     "details": "Matstation, 15 files"
   },
   {
-    "filename": "goblin-fighter",
+    "filename": "Goblin Fighter",
     "tags": [
       "Enemy",
       "Goblin"
@@ -55,7 +55,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "zombies",
+    "filename": "Zombies",
     "tags": [
       "Enemy",
       "Undead",
@@ -65,7 +65,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "the-dead-warlord",
+    "filename": "The Dead Warlord",
     "tags": [
       "Enemy",
       "Undead"
@@ -74,7 +74,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "medival-knight",
+    "filename": "Medieval Knight",
     "tags": [
       "Hero",
       "Warrior",
@@ -84,7 +84,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "oldhammer-barbarian",
+    "filename": "Oldhammer Barbarian",
     "tags": [
       "Hero",
       "Warrior",
@@ -94,7 +94,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "orc-warrior",
+    "filename": "Orc Warrior",
     "tags": [
       "Enemy",
       "Orc"
@@ -103,7 +103,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "dice-tower-tray",
+    "filename": "Dice Tower Tray",
     "tags": [
       "Accessory"
     ],
@@ -111,7 +111,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "12th-century-footknight",
+    "filename": "12th Century Footknight",
     "tags": [
       "Hero",
       "Warrior",
@@ -131,7 +131,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "mad-wizard-dice-tower",
+    "filename": "Mad Wizard Dice Tower",
     "tags": [
       "Accessory"
     ],
@@ -139,7 +139,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "Dwarf with hammer 28-32",
+    "filename": "Dwarf with Hammer",
     "tags": [
       "Hero",
       "Dwarf",
@@ -148,9 +148,10 @@
     ],
     "link": "https://drive.google.com/file/d/1pnXfjZ_GJ7FmqjKVxPUDKu-28Z_WhWbf/view?usp=drivesdk",
     "thumbnail": "https://via.placeholder.com/100"
+    "details" : "28mm, 32mm"
   },
   {
-    "filename": "fates-end-dice-tower",
+    "filename": "Fates End Dice Tower",
     "tags": [
       "Accessory"
     ],
@@ -158,7 +159,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "Olistin-Alatel",
+    "filename": "Olistin Alatel",
     "tags": [
       "Hero"
     ],
@@ -166,7 +167,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "demonic-slayer",
+    "filename": "Demonic Slayer",
     "tags": [
       "Enemy",
       "demon"
@@ -175,7 +176,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "free-stl-tree-elf-lady",
+    "filename": "Elf Lady",
     "tags": [
       "NPC",
       "Elf",
@@ -185,7 +186,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "Magnum_Orcus",
+    "filename": "Magnum Orcus",
     "tags": [
       "Enemy",
       "Orc",
@@ -195,7 +196,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "werewolf",
+    "filename": "Werewolf",
     "tags": [
       "Enemy",
       "Monster",
@@ -205,7 +206,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "Pack Mule resting",
+    "filename": "Pack Mule Resting",
     "tags": [
       "Animal",
       "Mount"
@@ -214,7 +215,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "Death_Priest",
+    "filename": "Death Priest",
     "tags": [
       "Enemy",
       "Hero",
@@ -226,7 +227,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "Warborn-Free",
+    "filename": "Warborn",
     "tags": [
       "Hero",
       "Warrior",
@@ -245,7 +246,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "muriel",
+    "filename": "Muriel",
     "tags": [
       "Hero",
       "Female"
@@ -254,7 +255,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "SerratiSover-eign",
+    "filename": "Serrati Sovereign",
     "tags": [
       "Enemy"
     ],
@@ -274,7 +275,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "purple-worm",
+    "filename": "Purple Worm",
     "tags": [
       "Enemy",
       "Monster",
@@ -292,7 +293,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "Free Crusader",
+    "filename": "Crusader",
     "tags": [
       "Hero",
       "Warrior",
@@ -302,7 +303,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "HUNTER",
+    "filename": "Hunter Woman",
     "tags": [
       "Hero",
       "Thief",
@@ -321,7 +322,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "schwarzburg-butcher",
+    "filename": "Schwarzburg Butcher",
     "tags": [
       "Hero",
       "Enemy",
@@ -332,7 +333,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "Skorath_Dual-SwordStand_Unsupported",
+    "filename": "Skorath Dual SwordStand Unsupported",
     "tags": [
       "Enemy"
     ],
@@ -340,7 +341,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "Skorath_Dual-SwordStand_Supported",
+    "filename": "Skorath Dual SwordStand Supported",
     "tags": [
       "Enemy"
     ],
@@ -359,7 +360,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "Sup_BlueEyesWhiteDragon",
+    "filename": "SuperBlueEyesWhiteDragon",
     "tags": [
       "Enemy",
       "Monster",
@@ -370,7 +371,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "BlueEyesWhite-Dragon",
+    "filename": "BlueEyesWhiteDragon",
     "tags": [
       "Enemy",
       "Monster",
@@ -381,7 +382,7 @@
     "thumbnail": "https://via.placeholder.com/100"
   },
   {
-    "filename": "morgana-nsfw",
+    "filename": "Morgana",
     "tags": [
       "Hero",
       "Enemy",
