@@ -161,7 +161,6 @@
   font-size: 0.75rem;
   padding: 3px 8px;
   margin-right: 5px;
-  margin-top: 1rem;
   border-radius: 4px;
   border: 1px solid #888;
 }
@@ -175,6 +174,14 @@
   border-radius: 20px;
   margin: 3px;
   cursor: pointer;
+}
+
+.filename {
+  display: block;            /* make it behave like a block element */
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;    /* add space below it */
+  color: #fff;               /* optional: ensure color contrast */
 }
 
 #modal {
@@ -374,6 +381,7 @@ function renderActiveTags() {
 
         const title = document.createElement("strong");
         title.textContent = entry.filename;
+        title.className = "filename";
 
         const tagContainer = document.createElement("div");
         
