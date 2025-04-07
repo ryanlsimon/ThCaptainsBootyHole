@@ -69,26 +69,6 @@
       padding: 0.5rem 1rem;
       cursor: pointer;
     }
-    
-    .download-btn {
-  font-family: Arial, sans-serif;
-  font-size: 2rem !important; /* adjust to taste */
-  background: none;
-  border: 2px solid #b084f7;
-  color: #b084f7;
-  padding: 0.4rem 0.6rem;
-  border-radius: 4px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block !important
-  text-align: left;
-  transition: background 0.2s, color 0.2s;
-}
-
-.download-btn:hover {
-  background: #b084f7;
-  color: black;
-}
 
     input[type="text"], select {
       width: 100%;
@@ -133,22 +113,6 @@
   justify-content: space-between;
 }
 
-.item a {
-  display: block;
-  width: 40px;
-  height: 40px;
-  text-align: center;
-  padding: 0.4rem 0.8rem;
-  margin-top: 0.5rem;
-  background-color: transparent;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 0.85em;
-  box-sizing: border-box;
-  transition: background 0.2s ease;
-}
 
 .item a:hover {
   background: #7e5ebd;
@@ -393,14 +357,6 @@ function renderActiveTags() {
           tagContainer.appendChild(span);
         });
     
-        
-        const link = document.createElement("a");
-link.href = entry.link;
-link.innerHTML = "&#11015;"; // Unicode down arrow
-link.setAttribute("aria-label", "Download STL");
-link.target = "_blank";
-link.download = true;
-link.className = "download-btn";
         
 
         content.appendChild(title);
