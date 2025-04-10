@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Booty Vault</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: monospace; background: #1e1e2f; color: #eee; padding: 2rem; }
+    .item { background: #2a2a3d; padding: 1rem; border-radius: 10px; margin-bottom: 1rem; }
+    #grid-lock { display: grid; grid-template-columns: repeat(3, 50px); gap: 10px; margin-bottom: 1rem; justify-content: center; }
+    .grid-button { background: #444; width: 50px; height: 50px; border-radius: 6px; cursor: pointer; }
+    #editor { display:none; max-width:500px; margin:2rem auto; background:#2a2a3d; padding:1rem; border-radius:10px; }
+    input, textarea { width:100%; margin:0.5rem 0; padding:0.5rem; border:none; border-radius:6px; background:#3a3a50; color:white; }
+    button { padding: 0.5rem 1rem; border: none; background: #9d79d6; color: white; border-radius: 6px; margin-right: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Enter Access Code</h1>
+  <div id="grid-lock">
+    <div class="grid-button" data-id="1"></div>
+    <div class="grid-button" data-id="2"></div>
+    <div class="grid-button" data-id="3"></div>
+    <div class="grid-button" data-id="4"></div>
+    <div class="grid-button" data-id="5"></div>
+    <div class="grid-button" data-id="6"></div>
+    <div class="grid-button" data-id="7"></div>
+    <div class="grid-button" data-id="8"></div>
+    <div class="grid-button" data-id="9"></div>
+  </div>
+  <p id="msg" style="color:#f88;"></p>
+
+  <div id="viewer" style="display:none;">
+    <h2>File Viewer</h2>
+    <div id="items"></div>
+  </div>
+
+  <div id="editor">
+    <h2>Admin Panel</h2>
+    <input id="new-filename" type="text" placeholder="Filename" />
+    <input id="new-tags" type="text" placeholder="Tags (comma separated)" />
+    <input id="new-link" type="text" placeholder="Download Link" />
+    <input id="new-thumbnail" type="text" placeholder="Thumbnail URL" />
+    <textarea id="new-details" placeholder="Details"></textarea>
+    <button onclick="addEntry()">Add Entry</button>
+    <button onclick="downloadUpdatedJson()">Download JSON</button>
+  </div>
+
+  <script>
+    const viewerCode = ['1', '5', '9', '2'];
+    const editorCode = ['3', '5', '7', '2'];
+    let inputSequence = [];
+    let data = [];
+
+    const itemsDiv = document.getElementById("items");
+
+    document.querySelectorAll('.grid-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        inputSequence.push(id);
+
+        if (inputSequence.length === 4) {
+          if (JSON.stringify(inputSequence) === JSON.stringify(viewerCode)) {
+            document.getElementById("viewer").style.display = "block";
+            renderItems();
+          } else if (JSON.stringify(inputSequence) === JSON.stringify(editorCode)) {
+            document.getElementById("editor").style.display = "block";
+          } else {
+            document.getElementById("msg").textContent = "Access denied.";
+          }
+          inputSequence = [];
+        }
+      });
+    });
+
+    function renderItems() {
+      itemsDiv.innerHTML = "";
+      data.forEach(entry => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `<strong>${{entry.filename}}</strong><br><small>${{entry.tags.join(', ')}}</small>`;
+        itemsDiv.appendChild(div);
+      });
+    }
+
+    function addEntry() {
+      const entry = {
+        filename: document.getElementById("new-filename").value,
+        tags: document.getElementById("new-tags").value.split(',').map(t => t.trim()),
+        link: document.getElementById("new-link").value,
+        thumbnail: document.getElementById("new-thumbnail").value,
+        details: document.getElementById("new-details").value
+      };
+      data.push(entry);
+      alert("Entry added!");
+      renderItems();
+    }
+
+    function downloadUpdatedJson() {
+      const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "data.json";
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+  </script>
+</body>
+</html>
