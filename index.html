@@ -55,7 +55,26 @@
     const itemsDiv = document.getElementById("items");
 
     document.querySelectorAll('.grid-button').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', handleGridInput);
+        btn.addEventListener('touchstart', handleGridInput);
+      }
+    });
+
+    function handleGridInput(e) {
+      const id = e.currentTarget.getAttribute('data-id');
+      inputSequence.push(id);
+
+      if (inputSequence.length === 4) {
+        if (JSON.stringify(inputSequence) === JSON.stringify(viewerCode)) {
+          document.getElementById("viewer").style.display = "block";
+          renderItems();
+        } else if (JSON.stringify(inputSequence) === JSON.stringify(editorCode)) {
+          document.getElementById("editor").style.display = "block";
+        } else {
+          document.getElementById("msg").textContent = "Access denied.";
+        }
+        inputSequence = [];
+      }
         const id = btn.getAttribute('data-id');
         inputSequence.push(id);
 
